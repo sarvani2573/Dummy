@@ -4,23 +4,25 @@ const Api=()=>{
   const [users,setusers]=useState([])
   const [search,setSearch]=useState(" ")
   const [filter,setFilter]=useState([])
-  const [loading,setLoading]=useEffect(true)
+  const [loading,setLoading]=useState(true)
 
     useEffect (()=>{
         fetch("https://jsonplaceholder.typicode.com/users")
         .then((response)=>response.json())
         .then((data)=>{
-            setusers(data),
-            setFilter(data)
-            setLoading(false)
+            setusers(data);
+            setFilter(data);
+            setLoading(false);
         })
-        .catch(error=>console.error(error))
-        setLoading(false)
+        .catch((error)=>{
+            console.error("Error fetching users:", error);
+            setLoading(false);
+        });
     },[])
 
     useEffect(()=>{
          const updatedList = users.filter(user=>
-            user.name.toLowerCase().includes(search(toLowerCase()))
+            user.name.toLowerCase().includes(search.toLowerCase())
          )
          setFilter(updatedList)
     },[search,users])
@@ -35,7 +37,7 @@ const Api=()=>{
                     
                         <ul>
                             {filter.map((user)=>(
-                                 <li key={user.id}>
+                                 <li key={user.id} style={{listStyle:"none"}}>
                                     <p>{user.name} -- {user.email}</p>
 
                                  </li>
