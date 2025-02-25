@@ -1,5 +1,6 @@
 
 import './App.css';
+import FilterList1 from './components/fetch';
 import FilterList from './components/usestate';
 
 function App() {
@@ -7,6 +8,8 @@ function App() {
     <div className="App">
      
      <FilterList/>
+     <FilterList1/>
+
     </div>
   );
 }
