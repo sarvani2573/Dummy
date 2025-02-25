@@ -48,7 +48,7 @@ const FilterList1 = () => {
     
       {filteredItems.map((item) => (
         <div key={item.id}>
-          {item.name} ({item.category})
+          {item.name} {item.category}
         </div>
       ))}
     </div>
